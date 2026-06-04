@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eduardo Silva — Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="importmap">
+      { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js" } }
+    </script>
+  </head>
+  <body>
+
+    <nav>
+      <a class="site-name">Eduardo<br>Silva</a>
+      <button class="menu-btn" type="button">Menu</button>
+    </nav>
+
+    <div class="hero" id="home">
+      <canvas></canvas>
+      <p class="hero-left">Experiências profissionais</p>
+      <p class="hero-right">Portfolio 2026</p>
+    </div>
+
+    <div class="about" id="about">
+      <span class="section-num reveal">01</span>
+      <span class="section-label reveal">Competências</span>
+      <hr class="divider" />
+      <article class="about-grid">
+        <h2 class="about-heading reveal">Sobre<br>experiências<br>adquiridas</h2>
+        <p class="bio reveal">Profissional versátil com trajetória sólida na produção audiovisual e experiência em gestão administrativa e financeira de projetos sociais. Especializado em edição de vídeo, gerenciamento de transmissões ao vivo e operação técnica. Possui um histórico de crescimento que vai desde o suporte em Recursos Humanos em grande empresa varejista até a direção financeira de projetos financiados por fundos públicos (FUMCAD). Destaca-se pela capacidade de aliar criatividade técnica à organização estratégica e prestação de contas.</p>
+        <ul class="about-info reveal">
+          <li><span class="info-label">Localização</span><span class="info-value">São Paulo</span></li>
+          <li><span class="info-label">Disponibilidade</span><span class="info-value">Aberto a projetos</span></li>
+          <li><span class="info-label">Foco</span><span class="info-value">Produção audiovisual  Gestão</span></li>
+        </ul>
+      </article>
+      <img class="about-image reveal" src="about.jpg" alt="Eduardo Silva" onerror="this.style.display='none'" />
+    </div>
+
+    <div class="stats">
+      <hr class="divider" />
+      <ul class="stats-grid">
+        <li class="stat-item reveal">
+          <span class="stat-number" data-count="3">0</span>
+          <span class="stat-plus">+</span>
+          <span class="stat-label">Anos de<br>experiência</span>
+        </li>
+        <li class="stat-item reveal">
+          <span class="stat-number" data-count="2">0</span>
+          <span class="stat-plus">+</span>
+          <span class="stat-label">Empresas<br>alcançadas</span>
+        </li>
+        <li class="stat-item reveal">
+          <span class="stat-number" data-count="15">0</span>
+          <span class="stat-plus">+</span>
+          <span class="stat-label">Tecnologias<br>dominadas</span>
+        </li>
+        <li class="stat-item reveal">
+          <span class="stat-number stat-symbol">∞</span>
+          <span class="stat-plus"></span>
+          <span class="stat-label">Cervejas<br>consumidas</span>
+        </li>
+      </ul>
+      <hr class="divider" />
+    </div>
+
+    <div class="skills" id="skills">
+      <span class="section-num reveal">02</span>
+      <span class="section-label reveal">Habilidades</span>
+      <hr class="divider" />
+      <article class="skills-layout">
+        <h2 class="skills-heading reveal">Stack<br>técnico.</h2>
+        <ul class="skills-list">
+          <li class="skill-row reveal">
+            <span class="skill-name">HTML  CSS</span>
+            <span class="skill-cat">Especializado</span>
+            <span class="skill-bar"><span style="width:95%"></span></span>
+          </li>
+          <li class="skill-row reveal">
+            <span class="skill-name">Premiere  After Effects</span>
+            <span class="skill-cat">Especializado</span>
+            <span class="skill-bar"><span style="width:88%"></span></span>
+          </li>
+          <li class="skill-row reveal">
+            <span class="skill-name">Figma</span>
+            <span class="skill-cat">Especializado</span>
+            <span class="skill-bar"><span style="width:75%"></span></span>
+          </li>
+          <li class="skill-row reveal">
+            <span class="skill-name">Excel</span>
+            <span class="skill-cat">Especializado</span>
+            <span class="skill-bar"><span style="width:80%"></span></span>
+          </li>
+          <li class="skill-row reveal">
+            <span class="skill-name">Montagem de Hardware</span>
+            <span class="skill-cat">Especializado</span>
+            <span class="skill-bar"><span style="width:70%"></span></span>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="projects" id="projects">
+      <span class="section-num reveal">03</span>
+      <span class="section-label reveal">Registros de experiências</span>
+      <hr class="divider" />
+      <ul class="projects-grid">
+
+        <li class="project-card reveal">
+          <div class="project-thumb project-thumb--1">
+            <img src="exp-carrefour.jpg" alt="Assistente Administrativo – Carrefour" class="project-thumb-img" onerror="this.style.display='none'" />
+            <span class="project-thumb-label">01</span>
+          </div>
+          <ul class="project-tags">
+            <li>Administrativo</li>
+            <li>Comunicação</li>
+          </ul>
+          <h2>Assistente Administrativo 2024</h2>
+          <p class="project-desc">Em 2024 entrou no Carrefour e se destacou entre os aprendizes, sendo convidado para ser assistente administrativo. Teve papel importante na organização, digitalização e participação no gerenciamento financeiro.</p>
+        </li>
+
+        <li class="project-card reveal">
+          <div class="project-thumb project-thumb--2">
+            <img src="exp-fumcad.jpg" alt="Diretor Financeiro – FUMCAD" class="project-thumb-img" onerror="this.style.display='none'" />
+            <span class="project-thumb-label">02</span>
+          </div>
+          <ul class="project-tags">
+            <li>Administrativo</li>
+            <li>Diretor</li>
+            <li>Programador</li>
+          </ul>
+          <h2>Diretor Financeiro e Coordenador 2025–2026</h2>
+          <p class="project-desc">Em 2025 entrou como assistente administrativo no FUMCAD. Após 3 meses foi promovido para gerenciar toda a administração do projeto. Em setembro de 2025 tornou-se coordenador de sistemas, construindo um gerenciador de documentos com acervo online.</p>
+          <a href="#" class="project-link">Ver projeto <span>→</span></a>
+        </li>
+
+        <li class="project-card reveal">
+          <div class="project-thumb project-thumb--3">
+            <img src="exp-pirania.jpg" alt="Pirania – Portal Cativo Comunitário" class="project-thumb-img" onerror="this.style.display='none'" />
+            <span class="project-thumb-label">03</span>
+          </div>
+          <ul class="project-tags">
+            <li>Redes comunitárias</li>
+            <li>Design</li>
+            <li>Programador</li>
+          </ul>
+          <h2>Atualização do Pirania 2026</h2>
+          <p class="project-desc">Em 2026 viajou para Cotijuba (Ilha do Pará) para atualizar o firmware e criar um sistema de tokens aplicado em roteadores, atualizando o Pirania — portal cativo comunitário utilizado mundialmente em redes mesh.</p>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="quote-section">
+      <hr class="divider" />
+      <p class="quote-text reveal">"É a comunicação que<br>faz a diferença."</p>
+      <span class="quote-cite reveal">— Eduardo Silva</span>
+      <hr class="divider" />
+    </div>
+
+    <div class="contact" id="contact">
+      <span class="section-num reveal">04</span>
+      <span class="section-label reveal">Contato</span>
+      <hr class="divider" />
+      <article class="contact-grid">
+        <h2 class="contact-heading reveal">Vamos<br>trabalhar<br>juntos?</h2>
+        <a href="mailto:eeduardosilvacosta6@gmail.com" class="contact-email reveal">eeduardosilvacosta6@gmail.com</a>
+        <ul class="social-links reveal">
+          <a href="#" class="social-link"><span class="social-name">GitHub</span><span class="social-arrow">↗</span></a>
+          <a href="#" class="social-link"><span class="social-name">WhatsApp</span><span class="social-arrow">↗</span></a>
+        </ul>
+      </article>
+    </div>
+
+    <p class="site-footer">© 2026 Portfolio do Eduardo</p>
+
+    <script type="module" src="script.js"></script>
+
+    <script>
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      function countUp(el) {
+        const target = parseInt(el.dataset.count);
+        const duration = 1200;
+        const start = performance.now();
+        function tick(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+      }
+
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            countUp(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.stat-number[data-count]').forEach(el => countObserver.observe(el));
+
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.skill-bar span').forEach(bar => {
+              bar.style.transition = 'width 1s cubic-bezier(0.4,0,0.2,1)';
+              const w = bar.style.width;
+              bar.style.width = '0%';
+              setTimeout(() => bar.style.width = w, 50);
+            });
+            barObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      document.querySelectorAll('.skills-list').forEach(el => barObserver.observe(el));
+
+      document.querySelectorAll('.skill-row').forEach((row, i) => {
+        row.style.transitionDelay = `${i * 0.08}s`;
+      });
+
+      document.querySelectorAll('.project-card').forEach((card, i) => {
+        card.style.transitionDelay = `${i * 0.12}s`;
+      });
+    </script>
+
+  </body>
+</html>
