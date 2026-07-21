@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Righteous&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Righteous&display=swap");
 
 *, *::before, *::after {
   margin: 0;
@@ -128,7 +128,7 @@ nav {
   z-index: 1;
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(rgba(9, 9, 11, 0.08), rgba(9, 9, 11, 0.18)), url("portrait_top.png");
+  background-image: linear-gradient(rgba(9, 9, 11, 0.08), rgba(9, 9, 11, 0.18)), url("../assets/images/portrait-main.png");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto 118%;

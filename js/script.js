@@ -1,4 +1,4 @@
-const hero = document.querySelector(".hero");
+﻿const hero = document.querySelector(".hero");
 const heroCenter = document.querySelector(".hero-center");
 const heroTitle = document.querySelector(".hero-title");
 const heroParallaxImages = document.querySelectorAll(".hero-parallax-img");
@@ -74,16 +74,16 @@ window.addEventListener("load", updateHero);
 updateHero();
 
 const logoFiles = [
-  { src: "logos/HTML5_logo_and_wordmark.svg.webp", alt: "HTML5" },
-  { src: "logos/CSS3_logo_and_wordmark.svg.webp", alt: "CSS3" },
-  { src: "logos/JavaScript-logo.png", alt: "JavaScript" },
-  { src: "logos/adobe-premiere-pro-logo-0-1.png", alt: "Adobe Premiere Pro" },
-  { src: "logos/after-effects.svg", alt: "Adobe After Effects" },
-  { src: "logos/DaVinci_Resolve_Studio.png", alt: "DaVinci Resolve Studio" },
-  { src: "logos/Microsoft_Office_Excel_(2025–present).svg.webp", alt: "Microsoft Excel" },
-  { src: "logos/Microsoft_Office_PowerPoint_(2025–present).svg.webp", alt: "Microsoft PowerPoint" },
-  { src: "logos/Microsoft_Office_Word_(2019–2025).svg.webp", alt: "Microsoft Word" },
-  { src: "logos/claude-logo-png_seeklogo-554534.png", alt: "Claude" },
+  { src: "assets/logos/html.webp", alt: "HTML5" },
+  { src: "assets/logos/css.webp", alt: "CSS3" },
+  { src: "assets/logos/javascript.png", alt: "JavaScript" },
+  { src: "assets/logos/premiere.png", alt: "Adobe Premiere Pro" },
+  { src: "assets/logos/after-effects.svg", alt: "Adobe After Effects" },
+  { src: "assets/logos/davinci.png", alt: "DaVinci Resolve Studio" },
+  { src: "assets/logos/excel.webp", alt: "Microsoft Excel" },
+  { src: "assets/logos/powerpoint.webp", alt: "Microsoft PowerPoint" },
+  { src: "assets/logos/word.webp", alt: "Microsoft Word" },
+  { src: "assets/logos/claude.png", alt: "Claude" },
 ];
 
 const logoCarousel = document.querySelector(".logo-carousel");
