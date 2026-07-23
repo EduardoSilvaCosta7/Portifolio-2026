@@ -5,14 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eduardo Silva — Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
 
-    <nav>
-      <a class="site-name">Eduardo<br>Silva</a>
-      <button class="menu-btn" type="button">Menu</button>
+    <a class="site-name">Eduardo<br>Silva</a>
+
+    <nav class="bottom-nav" data-liquid-nav aria-label="Navegação principal">
+      <a href="contato.html">contato</a>
+      <a href="#home">início</a>
+      <a href="experiencias.html">experiências</a>
+    </nav>
+
+    <nav class="language-nav" data-liquid-nav aria-label="Idioma">
+      <a href="#" data-lang="pt-br" aria-current="true">pt-br</a>
+      <a href="#" data-lang="en">en</a>
     </nav>
 
     <div class="hero" id="home">
@@ -31,143 +38,69 @@
       <div class="hero-fade"></div>
     </div>
 
-    <div class="about" id="about">
-      <span class="section-num reveal">01</span>
-      <span class="section-label reveal">Competências</span>
-      <hr class="divider" />
-      <article class="about-grid">
-        <h2 class="about-heading reveal">Sobre<br>experiências<br>adquiridas</h2>
-        <p class="bio reveal">Profissional versátil com trajetória sólida na produção audiovisual e experiência em gestão administrativa e financeira de projetos sociais. Especializado em edição de vídeo, gerenciamento de transmissões ao vivo e operação técnica. Possui um histórico de crescimento que vai desde o suporte em Recursos Humanos em grande empresa varejista até a direção financeira de projetos financiados por fundos públicos (FUMCAD). Destaca-se pela capacidade de aliar criatividade técnica à organização estratégica e prestação de contas.</p>
-        <ul class="about-info reveal">
-          <li><span class="info-label">Localização</span><span class="info-value">São Paulo</span></li>
-          <li><span class="info-label">Disponibilidade</span><span class="info-value">Aberto a projetos</span></li>
-          <li><span class="info-label">Foco</span><span class="info-value">Produção audiovisual  Gestão</span></li>
-        </ul>
-      </article>
-      <img class="about-image reveal" src="assets/images/about.jpg" alt="Eduardo Silva" onerror="this.style.display='none'" />
-    </div>
+    <section class="tools-section" aria-label="Programas que utilizo">
+      <div class="tools-inner">
+        <h2>Ferramentas que utilizo</h2>
+      </div>
 
-    <div class="stats">
-      <hr class="divider" />
-      <ul class="stats-grid">
-        <li class="stat-item reveal">
-          <span class="stat-number" data-count="3">0</span>
-          <span class="stat-plus">+</span>
-          <span class="stat-label">Anos de<br>experiência</span>
-        </li>
-        <li class="stat-item reveal">
-          <span class="stat-number" data-count="2">0</span>
-          <span class="stat-plus">+</span>
-          <span class="stat-label">Empresas<br>alcançadas</span>
-        </li>
-        <li class="stat-item reveal">
-          <span class="stat-number" data-count="15">0</span>
-          <span class="stat-plus">+</span>
-          <span class="stat-label">Tecnologias<br>dominadas</span>
-        </li>
-        <li class="stat-item reveal">
-          <span class="stat-number stat-symbol">∞</span>
-          <span class="stat-plus"></span>
-          <span class="stat-label">Cervejas<br>consumidas</span>
-        </li>
-      </ul>
-      <hr class="divider" />
-    </div>
-
-    <div class="skills" id="skills">
-      <span class="section-num reveal">02</span>
-      <span class="section-label reveal">Habilidades</span>
-      <hr class="divider" />
-      <article class="skills-layout">
-        <h2 class="skills-heading reveal">Stack<br>técnico.</h2>
-        <div class="skills-content">
-          <ul class="skills-list">
-            <li class="skill-row reveal">
-              <span class="skill-name">HTML  CSS</span>
-              <span class="skill-cat">Especializado</span>
-              <span class="skill-bar"><span style="width:95%"></span></span>
-            </li>
-            <li class="skill-row reveal">
-              <span class="skill-name">Premiere  After Effects</span>
-              <span class="skill-cat">Especializado</span>
-              <span class="skill-bar"><span style="width:88%"></span></span>
-            </li>
-            <li class="skill-row reveal">
-              <span class="skill-name">Figma</span>
-              <span class="skill-cat">Especializado</span>
-              <span class="skill-bar"><span style="width:75%"></span></span>
-            </li>
-            <li class="skill-row reveal">
-              <span class="skill-name">Excel</span>
-              <span class="skill-cat">Especializado</span>
-              <span class="skill-bar"><span style="width:80%"></span></span>
-            </li>
-            <li class="skill-row reveal">
-              <span class="skill-name">Montagem de Hardware</span>
-              <span class="skill-cat">Especializado</span>
-              <span class="skill-bar"><span style="width:70%"></span></span>
-            </li>
-          </ul>
-
-          <div class="logo-carousel splide reveal" aria-label="Logos de habilidades">
-            <div class="splide__track">
-              <ul class="splide__list"></ul>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="projects" id="projects">
-      <span class="section-num reveal">03</span>
-      <span class="section-label reveal">Registros de experiências</span>
-      <hr class="divider" />
-      <div class="experience-list-wrap">
-        <ul class="experience-list">
-          <li class="experience-item reveal" data-image="assets/images/exp-carrefour.jpg">
-            <h2>Assistente Administrativo 2024</h2>
-          </li>
-
-          <li class="experience-item reveal" data-image="assets/images/exp-fumcad.jpg">
-            <h2>Diretor Financeiro e Coordenador 2025–2026</h2>
-          </li>
-
-          <li class="experience-item reveal" data-image="assets/images/exp-pirania.jpg">
-            <h2>Atualização do Pirania 2026</h2>
-          </li>
-        </ul>
-
-        <div class="experience-preview" aria-hidden="true">
-          <img src="assets/images/exp-carrefour.jpg" alt="" />
+      <div class="tools-marquee" aria-hidden="true">
+        <div class="tools-track">
+          <img class="tool-logo" src="assets/logos/zip-logos/1.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/2.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/3.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/4.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/5.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/6.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/7.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/8.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/9.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/10.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/11.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/12.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/13.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/1.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/2.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/3.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/4.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/5.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/6.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/7.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/8.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/9.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/10.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/11.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/12.png" alt="" />
+          <img class="tool-logo" src="assets/logos/zip-logos/13.png" alt="" />
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="quote-section">
-      <hr class="divider" />
-      <p class="quote-text reveal">"É a comunicação que<br>faz a diferença."</p>
-      <span class="quote-cite reveal">— Eduardo Silva</span>
-      <hr class="divider" />
-    </div>
+    <section class="guide-section" aria-label="Guia de navegação">
+      <div class="guide-inner">
+        <h2>Escolha para onde seguir</h2>
 
-    <div class="contact" id="contact">
-      <span class="section-num reveal">04</span>
-      <span class="section-label reveal">Contato</span>
-      <hr class="divider" />
-      <article class="contact-grid">
-        <h2 class="contact-heading reveal">Vamos<br>trabalhar<br>juntos?</h2>
-        <a href="mailto:eeduardosilvacosta6@gmail.com" class="contact-email reveal">eeduardosilvacosta6@gmail.com</a>
-        <ul class="social-links reveal">
-          <li><a href="#" class="social-link"><span class="social-name">GitHub</span><span class="social-arrow">↗</span></a></li>
-          <li><a href="#" class="social-link"><span class="social-name">WhatsApp</span><span class="social-arrow">↗</span></a></li>
-        </ul>
-      </article>
-    </div>
+        <div class="guide-links">
+          <a class="guide-link" href="contato.html">
+            <span class="guide-number">01</span>
+            <span class="guide-title">Contato</span>
+            <span class="guide-copy">Instagram, email e GitHub para falar comigo.</span>
+          </a>
 
-    <p class="site-footer">© 2026 Portfolio do Eduardo</p>
+          <a class="guide-link" href="#home">
+            <span class="guide-number">02</span>
+            <span class="guide-title">Início</span>
+            <span class="guide-copy">Volte para a primeira cena animada do portfólio.</span>
+          </a>
 
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+          <a class="guide-link" href="experiencias.html">
+            <span class="guide-number">03</span>
+            <span class="guide-title">Experiências</span>
+            <span class="guide-copy">Veja os registros profissionais e projetos realizados.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script type="module" src="js/script.js"></script>
 
