@@ -221,16 +221,6 @@ body {
   font-weight: 400;
 }
 
-.experience-type {
-  margin-bottom: 1.2rem;
-  font-family: var(--font-body) !important;
-  font-size: 0.7rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--yellow) !important;
-}
-
 .experience-content {
   grid-column: 2;
 }
@@ -478,7 +468,7 @@ img { display: block; max-width: 100%; }
   z-index: 1;
   height: 100vh;
   width: 100%;
-  background-image: linear-gradient(rgba(9, 9, 11, 0.08), rgba(9, 9, 11, 0.18)), url("../assets/images/portrait-main.png");
+  background-image: linear-gradient(rgba(9, 9, 11, 0.08), rgba(9, 9, 11, 0.18)), url("../assets/images/portrait-main.svg");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: auto 118%;

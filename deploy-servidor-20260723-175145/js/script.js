@@ -243,12 +243,6 @@ function applyLanguage(language) {
   setText(".education-content h2", text.educationTitle);
   setText(".education-content p", text.educationCopy);
   setText(".experience-list__header p", lang === "en" ? "Experiences" : "Experi\u00eancias");
-  setTexts(
-    ".experience-type",
-    lang === "en"
-      ? ["Web design & development", "Coordination & content", "Administration & strategy", "Operations & organization"]
-      : ["Web design & desenvolvimento", "Coordena\u00e7\u00e3o & conte\u00fado", "Administra\u00e7\u00e3o & estrat\u00e9gia", "Opera\u00e7\u00f5es & organiza\u00e7\u00e3o"]
-  );
   setTexts(".experience-roles span", text.roles);
   setTexts(".experience-period .period-label", text.periods);
   setTexts(".experience-content h2", text.experiences.map((item) => item.title));
@@ -348,15 +342,21 @@ window.addEventListener("keydown", (event) => {
 });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pageTransitionKey = "portfolio-page-transition";
+let pageTransitionRunning = false;
 
 function getCurrentPage() {
   return window.location.pathname.split("/").pop() || "index.html";
 }
 
 function getTransitionSettings(targetUrl) {
-  const goingToContact = targetUrl.includes("contato");
-  const goingToExperiences = targetUrl.includes("experiencias");
-  const isForward = goingToContact || goingToExperiences;
+  const pageOrder = ["contato.html", "index.html", "experiencias.html"];
+  const targetPage = targetUrl.split(/[?#]/)[0].split("/").pop() || "index.html";
+  const currentPosition = pageOrder.indexOf(getCurrentPage());
+  const targetPosition = pageOrder.indexOf(targetPage);
+  const isForward = targetPosition >= currentPosition;
+  const goingToContact = targetPage === "contato.html";
+  const goingToExperiences = targetPage === "experiencias.html";
   const language = getCurrentLanguage();
 
   return {
@@ -375,13 +375,73 @@ function getTransitionSettings(targetUrl) {
             : "inicio",
     startX: isForward ? 100 : -100,
     pullX: isForward ? 36 : -36,
+    exitX: isForward ? -100 : 100,
     clipPath: isForward
       ? "polygon(12% 0, 100% 0, 100% 100%, 0 100%)"
       : "polygon(0 0, 88% 0, 100% 100%, 0 100%)",
   };
 }
 
+function savePageTransition(settings) {
+  try {
+    window.sessionStorage.setItem(
+      pageTransitionKey,
+      JSON.stringify({
+        className: settings.className,
+        label: settings.label,
+        clipPath: settings.clipPath,
+        exitX: settings.exitX,
+      }),
+    );
+  } catch {
+    // Navigation still works when storage is unavailable.
+  }
+}
+
+function revealPageAfterTransition() {
+  if (reducedMotion || !window.gsap) return;
+
+  let savedTransition;
+
+  try {
+    savedTransition = JSON.parse(
+      window.sessionStorage.getItem(pageTransitionKey) || "null",
+    );
+    window.sessionStorage.removeItem(pageTransitionKey);
+  } catch {
+    return;
+  }
+
+  if (!savedTransition) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = `page-transition ${savedTransition.className}`;
+  overlay.innerHTML = `<span>${savedTransition.label}</span>`;
+  document.body.appendChild(overlay);
+  document.body.classList.add("is-transitioning");
+  pageTransitionRunning = true;
+
+  window.gsap.set(overlay, {
+    xPercent: 0,
+    clipPath: savedTransition.clipPath,
+  });
+
+  window.gsap.to(overlay, {
+    xPercent: savedTransition.exitX,
+    duration: 0.78,
+    delay: 0.08,
+    ease: "power4.inOut",
+    onComplete: () => {
+      overlay.remove();
+      document.body.classList.remove("is-transitioning");
+      pageTransitionRunning = false;
+    },
+  });
+}
+
 function runPageTransition(targetUrl) {
+  if (pageTransitionRunning) return;
+
   if (reducedMotion || !window.gsap) {
     window.location.href = targetUrl;
     return;
@@ -393,6 +453,7 @@ function runPageTransition(targetUrl) {
   overlay.innerHTML = `<span>${settings.label}</span>`;
   document.body.appendChild(overlay);
   document.body.classList.add("is-transitioning");
+  pageTransitionRunning = true;
 
   window.gsap.set(overlay, {
     xPercent: settings.startX,
@@ -403,6 +464,7 @@ function runPageTransition(targetUrl) {
     .timeline({
       defaults: { ease: "power4.inOut" },
       onComplete: () => {
+        savePageTransition(settings);
         window.location.href = targetUrl;
       },
     })
@@ -417,7 +479,9 @@ function runPageTransition(targetUrl) {
     });
 }
 
-document.querySelectorAll(".bottom-nav a[href$='.html']").forEach((link) => {
+revealPageAfterTransition();
+
+document.querySelectorAll("a[href$='.html']").forEach((link) => {
   link.addEventListener("click", (event) => {
     const targetUrl = link.getAttribute("href");
 
