@@ -343,56 +343,30 @@ window.addEventListener("keydown", (event) => {
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const pageTransitionKey = "portfolio-page-transition";
+const introPlayedKey = "portfolio-intro-played";
 let pageTransitionRunning = false;
 
 function getCurrentPage() {
   return window.location.pathname.split("/").pop() || "index.html";
 }
 
-function getTransitionSettings(targetUrl) {
-  const pageOrder = ["contato.html", "index.html", "experiencias.html"];
-  const targetPage = targetUrl.split(/[?#]/)[0].split("/").pop() || "index.html";
-  const currentPosition = pageOrder.indexOf(getCurrentPage());
-  const targetPosition = pageOrder.indexOf(targetPage);
-  const isForward = targetPosition >= currentPosition;
-  const goingToContact = targetPage === "contato.html";
-  const goingToExperiences = targetPage === "experiencias.html";
-  const language = getCurrentLanguage();
-
-  return {
-    className: isForward ? "page-transition--forward" : "page-transition--back",
-    label:
-      language === "en"
-        ? goingToContact
-          ? "contact"
-          : goingToExperiences
-            ? "experiences"
-            : "home"
-        : goingToContact
-          ? "contato"
-          : goingToExperiences
-            ? "experiencias"
-            : "inicio",
-    startX: isForward ? 100 : -100,
-    pullX: isForward ? 36 : -36,
-    exitX: isForward ? -100 : 100,
-    clipPath: isForward
-      ? "polygon(12% 0, 100% 0, 100% 100%, 0 100%)"
-      : "polygon(0 0, 88% 0, 100% 100%, 0 100%)",
-  };
+function createTransitionOverlay() {
+  const overlay = document.createElement("div");
+  overlay.className = "page-transition";
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.innerHTML = `
+    <div class="page-transition__name">
+      <span>Eduardo</span>
+      <span>Silva</span>
+    </div>
+  `;
+  return overlay;
 }
 
-function savePageTransition(settings) {
+function savePageTransition() {
   try {
-    window.sessionStorage.setItem(
-      pageTransitionKey,
-      JSON.stringify({
-        className: settings.className,
-        label: settings.label,
-        clipPath: settings.clipPath,
-        exitX: settings.exitX,
-      }),
-    );
+    window.sessionStorage.setItem(pageTransitionKey, "true");
+    window.sessionStorage.setItem(introPlayedKey, "true");
   } catch {
     // Navigation still works when storage is unavailable.
   }
@@ -401,42 +375,55 @@ function savePageTransition(settings) {
 function revealPageAfterTransition() {
   if (reducedMotion || !window.gsap) return;
 
-  let savedTransition;
+  let cameFromNavigation = false;
+  let introAlreadyPlayed = false;
 
   try {
-    savedTransition = JSON.parse(
-      window.sessionStorage.getItem(pageTransitionKey) || "null",
-    );
+    cameFromNavigation = window.sessionStorage.getItem(pageTransitionKey) === "true";
+    introAlreadyPlayed = window.sessionStorage.getItem(introPlayedKey) === "true";
     window.sessionStorage.removeItem(pageTransitionKey);
+    window.sessionStorage.setItem(introPlayedKey, "true");
   } catch {
-    return;
+    cameFromNavigation = true;
   }
 
-  if (!savedTransition) return;
+  if (!cameFromNavigation && introAlreadyPlayed) return;
 
-  const overlay = document.createElement("div");
-  overlay.className = `page-transition ${savedTransition.className}`;
-  overlay.innerHTML = `<span>${savedTransition.label}</span>`;
+  const overlay = createTransitionOverlay();
+  const name = overlay.querySelector(".page-transition__name");
   document.body.appendChild(overlay);
   document.body.classList.add("is-transitioning");
   pageTransitionRunning = true;
 
-  window.gsap.set(overlay, {
-    xPercent: 0,
-    clipPath: savedTransition.clipPath,
-  });
+  window.gsap.set(overlay, { yPercent: 0 });
+  window.gsap.set(name, { yPercent: 125, rotateX: -12 });
 
-  window.gsap.to(overlay, {
-    xPercent: savedTransition.exitX,
-    duration: 0.78,
-    delay: 0.08,
-    ease: "power4.inOut",
-    onComplete: () => {
-      overlay.remove();
-      document.body.classList.remove("is-transitioning");
-      pageTransitionRunning = false;
-    },
-  });
+  window.gsap
+    .timeline({
+      onComplete: () => {
+        overlay.remove();
+        document.body.classList.remove("is-transitioning");
+        pageTransitionRunning = false;
+      },
+    })
+    .to(name, {
+      yPercent: 0,
+      rotateX: 0,
+      duration: 0.78,
+      ease: "power4.out",
+    })
+    .to(name, {
+      yPercent: -132,
+      color: "#858585",
+      rotateX: 10,
+      duration: 0.8,
+      ease: "power3.in",
+    }, "+=0.18")
+    .to(overlay, {
+      yPercent: -100,
+      duration: 0.72,
+      ease: "power4.inOut",
+    }, "-=0.34");
 }
 
 function runPageTransition(targetUrl) {
@@ -447,35 +434,26 @@ function runPageTransition(targetUrl) {
     return;
   }
 
-  const settings = getTransitionSettings(targetUrl);
-  const overlay = document.createElement("div");
-  overlay.className = `page-transition ${settings.className}`;
-  overlay.innerHTML = `<span>${settings.label}</span>`;
+  const overlay = createTransitionOverlay();
+  const name = overlay.querySelector(".page-transition__name");
   document.body.appendChild(overlay);
   document.body.classList.add("is-transitioning");
   pageTransitionRunning = true;
 
-  window.gsap.set(overlay, {
-    xPercent: settings.startX,
-    clipPath: settings.clipPath,
-  });
+  window.gsap.set(overlay, { yPercent: 100 });
+  window.gsap.set(name, { yPercent: 125 });
 
   window.gsap
     .timeline({
-      defaults: { ease: "power4.inOut" },
       onComplete: () => {
-        savePageTransition(settings);
+        savePageTransition();
         window.location.href = targetUrl;
       },
     })
     .to(overlay, {
-      xPercent: settings.pullX,
-      duration: 0.28,
-      ease: "power2.out",
-    })
-    .to(overlay, {
-      xPercent: 0,
-      duration: 0.72,
+      yPercent: 0,
+      duration: 0.58,
+      ease: "power4.inOut",
     });
 }
 
