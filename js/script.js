@@ -399,8 +399,21 @@ const filmstrip = document.querySelector(".showcase-filmstrip");
 if (filmstrip) {
   const cards = [...filmstrip.querySelectorAll(".showcase-filmstrip__card")];
   const progress = [...filmstrip.querySelectorAll(".showcase-filmstrip__progress span")];
+  const track = filmstrip.querySelector(".showcase-filmstrip__track");
   let activeIndex = 0;
   let startX = 0;
+
+  function centerActiveCard() {
+    if (!track || window.innerWidth > 680) {
+      if (track) track.style.transform = "";
+      return;
+    }
+
+    const activeCard = cards[activeIndex];
+    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
+    const viewportCenter = filmstrip.clientWidth / 2;
+    track.style.transform = `translateX(${viewportCenter - cardCenter}px)`;
+  }
 
   function selectShowcaseCard(nextIndex) {
     activeIndex = Math.max(0, Math.min(nextIndex, cards.length - 1));
@@ -413,7 +426,7 @@ if (filmstrip) {
     });
 
     progress.forEach((dot, index) => dot.classList.toggle("is-active", index === activeIndex));
-
+    requestAnimationFrame(centerActiveCard);
   }
 
   cards.forEach((card, index) => {
@@ -442,6 +455,8 @@ if (filmstrip) {
     if (Math.abs(distance) < 42) return;
     selectShowcaseCard(activeIndex + (distance < 0 ? 1 : -1));
   });
+
+  window.addEventListener("resize", centerActiveCard);
 
   selectShowcaseCard(0);
 }

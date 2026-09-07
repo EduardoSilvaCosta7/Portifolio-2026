@@ -1645,6 +1645,8 @@ img { display: block; max-width: 100%; }
     justify-content: flex-start;
     gap: 0.7rem;
     padding: 2.5rem 1rem 3.75rem;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
   }
 
   .showcase-filmstrip__card {
@@ -1652,7 +1654,7 @@ img { display: block; max-width: 100%; }
   }
 
   .showcase-filmstrip__card.is-active {
-    flex-basis: calc(100vw - 3.5rem);
+    flex-basis: calc(100vw - 1.5rem);
   }
 
   .showcase-filmstrip__card--carrefour span {
@@ -2146,13 +2148,13 @@ img { display: block; max-width: 100%; }
     bottom: auto;
     grid-template-columns: 1fr auto;
     width: calc(100% - 1rem);
-    min-height: 3.45rem;
-    padding: 0.32rem 0.38rem 0.32rem 0.72rem;
+    min-height: 3.9rem;
+    padding: 0.4rem 0.5rem 0.4rem 0.85rem;
     overflow: visible;
   }
 
   .topbar__brand {
-    font-size: 0.72rem;
+    font-size: 0.78rem;
   }
 
   .topbar__links,
@@ -2161,8 +2163,8 @@ img { display: block; max-width: 100%; }
   }
 
   .topbar__toggle {
-    width: 2.7rem;
-    height: 2.7rem;
+    width: 3.05rem;
+    height: 3.05rem;
     display: grid;
     place-items: center;
     padding: 0;
