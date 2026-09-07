@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1276 447" role="img" aria-labelledby="signature-title">
+  <title id="signature-title">Monograma ES de Eduardo Silva</title>
+  <defs>
+    <linearGradient id="signature-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc900"/>
+      <stop offset="0.52" stop-color="#ffde00"/>
+      <stop offset="1" stop-color="#ffd000"/>
+    </linearGradient>
+  </defs>
+  <g class="signature-outline-group">
+      <path class="signature-outline" d="M 543 430 L 1023 430 L 1050 423 L 1067 415 L 1095 394 L 1114 371 L 1126 349 L 1166 259 L 1171 240 L 1171 221 L 1164 202 L 1153 190 L 1140 183 L 1129 180 L 777 180 L 766 174 L 764 170 L 764 161 L 779 128 L 793 112 L 809 105 L 1218 105 L 1259 16 L 765 16 L 751 20 L 739 26 L 725 36 L 714 47 L 703 62 L 673 120 L 648 176 L 646 186 L 646 208 L 649 220 L 656 235 L 672 252 L 689 261 L 705 265 L 1035 265 L 1044 269 L 1047 274 L 1047 284 L 1038 303 L 1029 318 L 1017 330 L 1003 338 L 991 341 L 588 341 Z" fill="none" stroke="#ffe600" stroke-width="7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <path class="signature-outline" d="M 166 50 L 146 71 L 136 86 L 126 106 L 19 346 L 16 371 L 18 384 L 25 400 L 39 416 L 48 422 L 63 428 L 73 430 L 512 430 L 557 341 L 159 342 L 153 341 L 145 336 L 142 331 L 141 322 L 167 266 L 535 266 L 577 180 L 207 180 L 209 172 L 226 137 L 232 128 L 248 113 L 269 105 L 651 105 L 684 42 L 678 16 L 248 16 L 223 20 L 203 27 L 184 37 Z" fill="none" stroke="#ffe600" stroke-width="7" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+  </g>
+  <path class="signature-fill" data-ignore="true" d="M 543 430 L 1023 430 L 1050 423 L 1067 415 L 1095 394 L 1114 371 L 1126 349 L 1166 259 L 1171 240 L 1171 221 L 1164 202 L 1153 190 L 1140 183 L 1129 180 L 777 180 L 766 174 L 764 170 L 764 161 L 779 128 L 793 112 L 809 105 L 1218 105 L 1259 16 L 765 16 L 751 20 L 739 26 L 725 36 L 714 47 L 703 62 L 673 120 L 648 176 L 646 186 L 646 208 L 649 220 L 656 235 L 672 252 L 689 261 L 705 265 L 1035 265 L 1044 269 L 1047 274 L 1047 284 L 1038 303 L 1029 318 L 1017 330 L 1003 338 L 991 341 L 588 341 Z M 166 50 L 146 71 L 136 86 L 126 106 L 19 346 L 16 371 L 18 384 L 25 400 L 39 416 L 48 422 L 63 428 L 73 430 L 512 430 L 557 341 L 159 342 L 153 341 L 145 336 L 142 331 L 141 322 L 167 266 L 535 266 L 577 180 L 207 180 L 209 172 L 226 137 L 232 128 L 248 113 L 269 105 L 651 105 L 684 42 L 678 16 L 248 16 L 223 20 L 203 27 L 184 37 Z" fill="url(#signature-yellow)" fill-rule="evenodd"/>
+</svg>

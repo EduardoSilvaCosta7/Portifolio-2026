@@ -8,29 +8,29 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-
-    <a class="site-name">Eduardo<br>Silva</a>
-
-    <nav class="bottom-nav" aria-label="Navegação principal">
-      <a href="contato.html">
-        <img class="nav-icon" src="assets/icons/contact.svg" alt="" aria-hidden="true" />
-        <span class="nav-label">contato</span>
-      </a>
-      <a href="#home" aria-current="page">
-        <img class="nav-icon" src="assets/icons/home.svg" alt="" aria-hidden="true" />
-        <span class="nav-label">início</span>
-      </a>
-      <a href="experiencias.html">
-        <img class="nav-icon" src="assets/icons/experience.svg" alt="" aria-hidden="true" />
-        <span class="nav-label">experiências</span>
-      </a>
-    </nav>
-
-    <nav class="language-nav" aria-label="Idioma">
-      <i class="language-icon" data-lucide="languages" aria-hidden="true"></i>
-      <a href="#" data-lang="pt-br" aria-current="true">pt-br</a>
-      <a href="#" data-lang="en">en</a>
-    </nav>
+    <header class="topbar">
+      <a class="topbar__brand" href="index.html" aria-label="Eduardo Silva, início">Eduardo<br>Silva</a>
+      <nav class="topbar__links" aria-label="Navegação principal">
+        <a href="index.html" aria-current="page">Início</a>
+        <a href="experiencias.html">Portfólio</a>
+      </nav>
+      <a class="topbar__contact" href="contato.html">Contato</a>
+      <button class="topbar__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+      <nav class="topbar__mobile-menu" id="mobile-menu" aria-label="Menu mobile">
+        <a href="index.html" aria-current="page">Início</a>
+        <a href="experiencias.html">Portfólio</a>
+        <a class="topbar__mobile-contact" href="contato.html">Contato</a>
+      </nav>
+    </header>
+    <svg class="glass-filter" aria-hidden="true" focusable="false">
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence" />
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="20" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
 
     <div class="hero" id="home">
       <div class="hero-center" aria-label="Retrato de Eduardo Silva"></div>
@@ -48,68 +48,83 @@
       <div class="hero-fade"></div>
     </div>
 
-    <section class="tools-section" aria-label="Programas que utilizo">
-      <div class="tools-inner">
-        <h2>Ferramentas que utilizo</h2>
-      </div>
-
-      <div class="tools-marquee" aria-hidden="true">
-        <div class="tools-track">
-          <img class="tool-logo" src="assets/logos/zip-logos/1.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/2.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/3.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/4.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/5.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/6.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/7.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/8.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/9.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/10.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/11.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/12.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/13.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/1.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/2.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/3.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/4.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/5.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/6.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/7.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/8.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/9.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/10.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/11.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/12.svg" alt="" />
-          <img class="tool-logo" src="assets/logos/zip-logos/13.svg" alt="" />
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="about-section__label">Sobre mim</div>
+      <div class="about-section__content">
+        <h2 id="about-title">Transformo organização e tecnologia em projetos reais.</h2>
+        <div>
+          <p>Atuo nas áreas de tecnologia, administração e coordenação de projetos, com experiência no planejamento, organização e acompanhamento de atividades e equipes.</p>
+          <p>Também desenvolvo soluções digitais, incluindo sites e aplicações. Minha experiência une gestão administrativa, coordenação e desenvolvimento tecnológico com foco na execução de projetos.</p>
         </div>
       </div>
     </section>
 
-    <section class="guide-section" aria-label="Guia de navegação">
-      <div class="guide-inner">
-        <h2>Escolha para onde seguir</h2>
+    <section class="showcase-section" aria-label="Projetos em destaque">
+      <div class="showcase-section__intro">
+        <p>Trabalhos selecionados</p>
+        <h2>Projetos em destaque</h2>
+      </div>
+      <div class="showcase-filmstrip" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
+        <div class="showcase-filmstrip__track">
+          <button class="showcase-filmstrip__card is-active" type="button" style="--card-glow: #b99a70" aria-label="Selecionar projeto Acervo Vivo" aria-current="true">
+            <img src="assets/images/acervo-vivo-card.png" alt="Eduardo Silva como coordenador na constru&ccedil;&atilde;o da plataforma Acervo Vivo" />
+          </button>
+          <button class="showcase-filmstrip__card showcase-filmstrip__card--carrefour" type="button" style="--card-glow: #ffe600" aria-label="Selecionar experi&ecirc;ncia Carrefour Administrativo">
+            <span>Carrefour</span>
+            <strong>Administrativo</strong>
+          </button>
+          <button class="showcase-filmstrip__card" type="button" style="--card-glow: #5792d6" aria-label="Selecionar projeto Pirania">
+            <img src="assets/images/pirania-card.png" alt="Card da remasteriza&ccedil;&atilde;o do site Pirania" />
+          </button>
+        </div>
+        <div class="showcase-filmstrip__progress" aria-hidden="true">
+          <span class="is-active"></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
 
-        <div class="guide-links">
-          <a class="guide-link" href="contato.html">
-            <span class="guide-title">Contato</span>
-            <span class="guide-copy">Instagram, email e GitHub para falar comigo.</span>
-          </a>
+    <section class="orbit-section" aria-label="Produções digitais">
+      <div class="orbit-section__copy">
+        <p>Produções digitais</p>
+        <h2>Competências técnicas</h2>
+      </div>
 
-          <a class="guide-link" href="#home">
-            <span class="guide-title">Início</span>
-            <span class="guide-copy">Volte para a primeira cena animada do portfólio.</span>
-          </a>
+      <div class="orbit-globe" aria-label="Ferramentas criativas e tecnológicas em órbita">
+        <div class="orbit orbit--one" aria-hidden="true">
+          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/1.svg" alt="" /></span>
+          <span style="--x: 100%; --y: 50%"><img src="assets/logos/zip-logos/2.svg" alt="" /></span>
+          <span style="--x: 50%; --y: 100%"><img src="assets/logos/zip-logos/3.svg" alt="" /></span>
+          <span style="--x: 0%; --y: 50%"><img src="assets/logos/zip-logos/4.svg" alt="" /></span>
+        </div>
+        <div class="orbit orbit--two" aria-hidden="true">
+          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/5.svg" alt="" /></span>
+          <span style="--x: 100%; --y: 50%"><img src="assets/logos/zip-logos/6.svg" alt="" /></span>
+          <span style="--x: 50%; --y: 100%"><img src="assets/logos/zip-logos/7.svg" alt="" /></span>
+          <span style="--x: 0%; --y: 50%"><img src="assets/logos/zip-logos/8.svg" alt="" /></span>
+        </div>
+        <div class="orbit orbit--three" aria-hidden="true">
+          <span style="--x: 21%; --y: 90%"><img src="assets/logos/zip-logos/9.svg" alt="" /></span>
+          <span style="--x: 2%; --y: 35%"><img src="assets/logos/zip-logos/10.svg" alt="" /></span>
+          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/11.svg" alt="" /></span>
+          <span style="--x: 98%; --y: 35%"><img src="assets/logos/zip-logos/12.svg" alt="" /></span>
+          <span style="--x: 79%; --y: 90%"><img src="assets/logos/zip-logos/13.svg" alt="" /></span>
+        </div>
+      </div>
+    </section>
 
-          <a class="guide-link" href="experiencias.html">
-            <span class="guide-title">Experiências</span>
-            <span class="guide-copy">Veja os registros profissionais e projetos realizados.</span>
-          </a>
+    <section class="contact-cta" aria-label="Entre em contato">
+      <div class="contact-cta__inner">
+        <div id="signature-drawing" aria-hidden="true"></div>
+        <h2>Entre em contato</h2>
+        <div class="contact-cta__links">
+          <a href="mailto:eduardosilcos@gmail.com">Email</a>
+          <a href="https://github.com/eeduardosilvacosta6-sketch" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://www.instagram.com/eduardoscosta7/" target="_blank" rel="noreferrer">Instagram</a>
         </div>
       </div>
     </section>
 
     <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script defer src="js/script.js"></script>
 
   </body>
