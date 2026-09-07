@@ -398,26 +398,30 @@ const filmstrip = document.querySelector(".showcase-filmstrip");
 
 if (filmstrip) {
   const cards = [...filmstrip.querySelectorAll(".showcase-filmstrip__card")];
-  const progress = [...filmstrip.querySelectorAll(".showcase-filmstrip__progress span")];
+  const progress = [...filmstrip.querySelectorAll(".showcase-filmstrip__progress button")];
   const track = filmstrip.querySelector(".showcase-filmstrip__track");
+  const mobileCarousel = window.matchMedia("(max-width: 680px)");
   let activeIndex = 0;
   let startX = 0;
+  let scrollFrame = 0;
 
   function centerActiveCard() {
-    if (!track || window.innerWidth > 680) {
+    if (!track || !mobileCarousel.matches) {
       if (track) track.style.transform = "";
       return;
     }
 
     const activeCard = cards[activeIndex];
-    const cardCenter = activeCard.offsetLeft + activeCard.offsetWidth / 2;
-    const viewportCenter = filmstrip.clientWidth / 2;
-    track.style.transform = `translateX(${viewportCenter - cardCenter}px)`;
+    const targetLeft = activeCard.offsetLeft + activeCard.offsetWidth / 2 - track.clientWidth / 2;
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    track.scrollTo({
+      left: Math.max(0, Math.min(targetLeft, maxScroll)),
+      behavior: "smooth",
+    });
   }
 
-  function selectShowcaseCard(nextIndex) {
+  function selectShowcaseCard(nextIndex, shouldCenter = true) {
     activeIndex = Math.max(0, Math.min(nextIndex, cards.length - 1));
-    const activeCard = cards[activeIndex];
 
     cards.forEach((card, index) => {
       const isActive = index === activeIndex;
@@ -425,12 +429,21 @@ if (filmstrip) {
       card.toggleAttribute("aria-current", isActive);
     });
 
-    progress.forEach((dot, index) => dot.classList.toggle("is-active", index === activeIndex));
-    requestAnimationFrame(centerActiveCard);
+    progress.forEach((dot, index) => {
+      const isActive = index === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.toggleAttribute("aria-current", isActive);
+    });
+
+    if (shouldCenter) requestAnimationFrame(centerActiveCard);
   }
 
   cards.forEach((card, index) => {
     card.addEventListener("click", () => selectShowcaseCard(index));
+  });
+
+  progress.forEach((dot, index) => {
+    dot.addEventListener("click", () => selectShowcaseCard(index));
   });
 
   filmstrip.addEventListener("keydown", (event) => {
@@ -451,10 +464,33 @@ if (filmstrip) {
   });
 
   filmstrip.addEventListener("pointerup", (event) => {
+    if (mobileCarousel.matches) return;
     const distance = event.clientX - startX;
     if (Math.abs(distance) < 42) return;
     selectShowcaseCard(activeIndex + (distance < 0 ? 1 : -1));
   });
+
+  track?.addEventListener("scroll", () => {
+    if (!mobileCarousel.matches || scrollFrame) return;
+
+    scrollFrame = requestAnimationFrame(() => {
+      scrollFrame = 0;
+      const viewportCenter = track.scrollLeft + track.clientWidth / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      cards.forEach((card, index) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(cardCenter - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+
+      if (closestIndex !== activeIndex) selectShowcaseCard(closestIndex, false);
+    });
+  }, { passive: true });
 
   window.addEventListener("resize", centerActiveCard);
 
@@ -593,4 +629,44 @@ window.addEventListener("keydown", (event) => {
 
 function getCurrentPage() {
   return window.location.pathname.split("/").pop() || "index.html";
+}
+
+function showOpeningIntro() {
+  const overlay = document.createElement("div");
+  overlay.className = "page-transition";
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.innerHTML = `
+    <div class="page-transition__name">
+      <span>Eduardo</span>
+      <span>Silva</span>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const name = overlay.querySelector(".page-transition__name");
+  const nameIn = name.animate(
+    [
+      { transform: "translateY(125%) rotateX(-12deg)" },
+      { transform: "translateY(0) rotateX(0deg)" },
+    ],
+    { duration: 720, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "forwards" },
+  );
+
+  nameIn.finished
+    .then(() => name.animate(
+      [
+        { transform: "translateY(0) rotateX(0deg)", color: "#000" },
+        { transform: "translateY(-132%) rotateX(10deg)", color: "#858585" },
+      ],
+      { duration: 720, delay: 140, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
+    ).finished)
+    .then(() => overlay.animate(
+      [{ transform: "translateY(0)" }, { transform: "translateY(-100%)" }],
+      { duration: 620, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
+    ).finished)
+    .finally(() => overlay.remove());
+}
+
+if (getCurrentPage() === "index.html") {
+  showOpeningIntro();
 }
