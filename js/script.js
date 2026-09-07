@@ -641,35 +641,29 @@ function showOpeningIntro() {
         <span><span>Eduardo</span></span>
         <span><span>Silva</span></span>
       </div>
-      <div class="page-transition__rule"></div>
     </div>
   `;
   document.body.appendChild(overlay);
 
   const content = overlay.querySelector(".page-transition__content");
   const words = [...overlay.querySelectorAll(".page-transition__name > span > span")];
-  const rule = overlay.querySelector(".page-transition__rule");
 
   const wordAnimations = words.map((word, index) => word.animate(
     [
       { transform: "translateY(115%)", opacity: 0 },
       { transform: "translateY(0)", opacity: 1 },
     ],
-    { duration: 760, delay: 100 + index * 140, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "forwards" },
+    { duration: 480, delay: 40 + index * 80, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "forwards" },
   ).finished);
 
   Promise.all(wordAnimations)
-    .then(() => rule.animate(
-      [{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
-      { duration: 420, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "forwards" },
-    ).finished)
     .then(() => content.animate(
       [{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-2.5rem)", opacity: 0 }],
-      { duration: 360, delay: 430, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
+      { duration: 240, delay: 200, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
     ).finished)
     .then(() => overlay.animate(
       [{ clipPath: "inset(0 0 0 0)" }, { clipPath: "inset(0 0 100% 0)" }],
-      { duration: 680, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
+      { duration: 440, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
     ).finished)
     .finally(() => overlay.remove());
 }

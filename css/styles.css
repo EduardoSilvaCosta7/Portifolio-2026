@@ -747,15 +747,6 @@ img { display: block; max-width: 100%; }
   transform: translateY(115%);
 }
 
-.page-transition__rule {
-  width: min(100%, 42rem);
-  height: 0.25rem;
-  margin-top: clamp(1.5rem, 3vw, 2.75rem);
-  background: var(--yellow);
-  transform: scaleX(0);
-  transform-origin: center;
-}
-
 @media (max-width: 680px) {
   .page-transition {
     padding: 1.25rem;
