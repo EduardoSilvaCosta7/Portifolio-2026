@@ -148,13 +148,13 @@ body {
 .portfolio-page__eyebrow {
   margin: 0 0 clamp(2rem, 4vw, 3.5rem);
   padding-top: 0.9rem;
-  border-top: 2px solid #e2e6ef;
-  color: #17255f;
+  color: #000000;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.92rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  margin-left: 220px;
 }
 
 .portfolio-grid {
@@ -2301,7 +2301,8 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 700px) {
   .topbar {
-    top: max(0.55rem, env(safe-area-inset-top));
+    top: auto;
+    bottom: max(0.55rem, env(safe-area-inset-bottom));
     width: calc(100% - 1rem);
     min-height: 0;
     display: block;
@@ -2324,4 +2325,7 @@ img { display: block; max-width: 100%; }
     font-size: clamp(0.68rem, 3vw, 0.88rem);
   }
 
+  .hero-scroll-hint {
+    bottom: calc(max(0.55rem, env(safe-area-inset-bottom)) + 4.3rem);
+  }
 }
