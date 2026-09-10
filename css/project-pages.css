@@ -1,6 +1,6 @@
 body {
   background: #f4f7fc;
-  color: #08275f;
+  color: #000000;
 }
 
 .project-detail {
@@ -94,7 +94,7 @@ body {
 .project-detail__information p {
   max-width: 70rem;
   margin: 0;
-  color: #4c6087;
+  color: #444444;
   font-size: clamp(1rem, 1.35vw, 1.16rem);
   line-height: 1.65;
 }
@@ -104,12 +104,12 @@ body {
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
   margin: 2rem 0 0;
-  color: #4c6087;
+  color: #2b2b2b;
   font-size: clamp(0.86rem, 1.15vw, 1rem);
 }
 
 .project-detail__meta strong {
-  color: #08275f;
+  color: #000000;
 }
 
 .project-detail__gallery {
