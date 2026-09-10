@@ -1,75 +1,3 @@
-const hero = document.querySelector(".hero");
-const heroCenter = document.querySelector(".hero-center");
-const heroTitle = document.querySelector(".hero-title");
-const heroParallaxImages = document.querySelectorAll(".hero-parallax-img");
-
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-const lerp = (start, end, progress) => start + (end - start) * progress;
-
-const SECTION_HEIGHT = 1150;
-let ticking = false;
-
-function getHeroScroll() {
-  const rect = hero.getBoundingClientRect();
-  return clamp(-rect.top, 0, SECTION_HEIGHT + 500);
-}
-
-function getElementProgress(el, start, end) {
-  const rect = el.getBoundingClientRect();
-  const viewportStart = window.innerHeight - start;
-  const viewportEnd = -end;
-  const raw = (viewportStart - rect.top) / Math.max(1, viewportStart - viewportEnd);
-  return clamp(raw, 0, 1);
-}
-
-function updateHero() {
-  if (!hero || !heroCenter) return;
-
-  if (!ticking) {
-    ticking = true;
-    requestAnimationFrame(animateHero);
-  }
-}
-
-function animateHero() {
-  const scroll = getHeroScroll();
-  const clipProgress = clamp(scroll / SECTION_HEIGHT, 0, 1);
-  const zoomProgress = clamp(scroll / (SECTION_HEIGHT + 500), 0, 1);
-  const fadeProgress = clamp((scroll - SECTION_HEIGHT) / 500, 0, 1);
-
-  const clip1 = lerp(25, 0, clipProgress);
-  const clip2 = lerp(75, 100, clipProgress);
-  const backgroundSize = lerp(118, 100, zoomProgress);
-  const titleOpacity = lerp(1, 0, fadeProgress);
-
-  heroCenter.style.clipPath = `polygon(${clip1}% ${clip1}%, ${clip2}% ${clip1}%, ${clip2}% ${clip2}%, ${clip1}% ${clip2}%)`;
-  heroCenter.style.backgroundSize = `auto ${backgroundSize}%`;
-  heroCenter.style.opacity = 1 - fadeProgress;
-
-  if (heroTitle) {
-    heroTitle.style.opacity = titleOpacity;
-  }
-
-  heroParallaxImages.forEach((img) => {
-    const start = Number(img.dataset.start);
-    const end = Number(img.dataset.end);
-    const progress = getElementProgress(img, start, end);
-    const y = lerp(start, end, progress);
-    const scale = lerp(1, 0.85, clamp((progress - 0.75) / 0.25, 0, 1));
-    const opacity = lerp(1, 0, clamp((progress - 0.75) / 0.25, 0, 1));
-
-    img.style.transform = `translate3d(0, ${y}px, 0) scale(${scale})`;
-    img.style.opacity = opacity;
-  });
-
-  ticking = false;
-}
-
-window.addEventListener("scroll", updateHero, { passive: true });
-window.addEventListener("resize", updateHero);
-window.addEventListener("load", updateHero);
-updateHero();
-
 const translations = {
   "pt-br": {
     titles: {
@@ -84,10 +12,10 @@ const translations = {
     showcaseKicker: "Trabalhos selecionados",
     showcaseTitle: "Projetos em destaque",
     aboutLabel: "Sobre mim",
-    aboutTitle: "Transformo organização e tecnologia em projetos reais.",
+    aboutTitle: "Conecto estratégia, tecnologia e execução para tirar projetos do papel.",
     aboutParagraphs: [
-      "Atuo nas áreas de tecnologia, administração e coordenação de projetos, com experiência no planejamento, organização e acompanhamento de atividades e equipes.",
-      "Também desenvolvo soluções digitais, incluindo sites e aplicações. Minha experiência une gestão administrativa, coordenação e desenvolvimento tecnológico com foco na execução de projetos.",
+      "Atuo de forma versátil entre tecnologia, administração, coordenação de projetos e design, com experiência em planejamento, organização, acompanhamento de equipes e criação de soluções visuais.",
+      "Também desenvolvo sites e aplicações, crio peças de design e trabalho com edição de vídeo e imagem. Essa combinação de competências me permite transitar entre estratégia, gestão e produção, adaptando-me às necessidades de cada projeto e conduzindo ideias até a entrega.",
     ],
     contactCtaTitle: "Entre em contato",
     contactKicker: "Contato",
@@ -140,10 +68,10 @@ const translations = {
     showcaseKicker: "Selected work",
     showcaseTitle: "Featured projects",
     aboutLabel: "About me",
-    aboutTitle: "I turn organization and technology into real projects.",
+    aboutTitle: "I connect strategy, technology and execution to bring projects to life.",
     aboutParagraphs: [
-      "I work across technology, administration and project coordination, with experience in planning, organization and following up on activities and teams.",
-      "I also develop digital solutions, including websites and applications. My experience combines administrative management, coordination and technological development focused on project delivery.",
+      "I work across technology, administration, project coordination and design, with experience in planning, organization, team coordination and the creation of visual solutions.",
+      "I also develop websites and applications, create design pieces, and work with video and image editing. This combination of skills allows me to move between strategy, management and production, adapt to each project's needs and carry ideas through to delivery.",
     ],
     contactCtaTitle: "Get in touch",
     contactKicker: "Contact",
@@ -330,7 +258,6 @@ function applyLanguage(language) {
   document.title = text.titles[getPageKey()] || text.titles.index;
 
   setTexts(".bottom-nav .nav-label", text.nav);
-  setText(".hero-left", text.heroLeft);
   setText(".orbit-section__copy p", text.orbitKicker);
   setText(".orbit-section__copy h2", text.orbitTitle);
   setText(".showcase-section__intro p", text.showcaseKicker);
@@ -372,6 +299,76 @@ document.querySelectorAll(".language-nav a[data-lang]").forEach((link) => {
 
 applyLanguage(getCurrentLanguage());
 window.lucide?.createIcons();
+
+const heroRotatingWord = document.querySelector(".hero-statement__word");
+
+if (heroRotatingWord) {
+  const heroWords = ["claras.", "intuitivas.", "humanas.", "eficientes."];
+  let heroWordIndex = 0;
+
+  window.setInterval(async () => {
+    const outgoing = heroRotatingWord.animate(
+      [
+        { transform: "translateY(0)", opacity: 1 },
+        { transform: "translateY(-105%)", opacity: 0 },
+      ],
+      { duration: 260, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
+    );
+
+    await outgoing.finished;
+    heroWordIndex = (heroWordIndex + 1) % heroWords.length;
+    heroRotatingWord.textContent = heroWords[heroWordIndex];
+    heroRotatingWord.animate(
+      [
+        { transform: "translateY(105%)", opacity: 0 },
+        { transform: "translateY(0)", opacity: 1 },
+      ],
+      { duration: 320, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "forwards" },
+    );
+  }, 1500);
+}
+
+const heroSignature = document.querySelector(".hero-signature");
+
+if (heroSignature) {
+  fetch("assets/images/signature-eduardo.svg")
+    .then((response) => {
+      if (!response.ok) throw new Error("Hero signature could not be loaded");
+      return response.text();
+    })
+    .then((markup) => {
+      heroSignature.innerHTML = markup;
+      const outlines = [...heroSignature.querySelectorAll(".signature-strokes path")];
+
+      outlines.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${length}`;
+      });
+
+      window.setTimeout(() => {
+        outlines.forEach((path, index) => path.animate(
+          [
+            { strokeDashoffset: path.getTotalLength(), opacity: 0.35 },
+            { strokeDashoffset: 0, opacity: 1 },
+          ],
+          {
+            duration: 900,
+            delay: index * 170,
+            easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+            fill: "forwards",
+          },
+        ));
+      }, 1450);
+    })
+    .catch(() => {
+      heroSignature.innerHTML = '<img src="assets/images/signature-eduardo.svg" alt="">';
+      heroSignature.animate(
+        [{ opacity: 0, transform: "translateY(0.75rem)" }, { opacity: 1, transform: "translateY(0)" }],
+        { duration: 500, fill: "forwards" },
+      );
+    });
+}
 
 document.querySelectorAll(".topbar__toggle").forEach((toggle) => {
   const topbar = toggle.closest(".topbar");
@@ -632,6 +629,7 @@ function getCurrentPage() {
 }
 
 function showOpeningIntro() {
+  const heroContent = document.querySelector(".hero__content");
   const overlay = document.createElement("div");
   overlay.className = "page-transition";
   overlay.setAttribute("aria-hidden", "true");
@@ -643,6 +641,7 @@ function showOpeningIntro() {
       </div>
     </div>
   `;
+  if (heroContent) heroContent.style.opacity = "0";
   document.body.appendChild(overlay);
 
   const content = overlay.querySelector(".page-transition__content");
@@ -661,11 +660,23 @@ function showOpeningIntro() {
       [{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-2.5rem)", opacity: 0 }],
       { duration: 240, delay: 200, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" },
     ).finished)
-    .then(() => overlay.animate(
-      [{ clipPath: "inset(0 0 0 0)" }, { clipPath: "inset(0 0 100% 0)" }],
-      { duration: 440, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
-    ).finished)
-    .finally(() => overlay.remove());
+    .then(() => {
+      const overlayExit = overlay.animate(
+        [{ clipPath: "inset(0 0 0 0)" }, { clipPath: "inset(0 0 100% 0)" }],
+        { duration: 440, easing: "cubic-bezier(0.76, 0, 0.24, 1)", fill: "forwards" },
+      ).finished;
+
+      const heroEntrance = heroContent?.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: 650, delay: 80, easing: "ease-out", fill: "forwards" },
+      ).finished;
+
+      return Promise.all([overlayExit, heroEntrance].filter(Boolean));
+    })
+    .finally(() => {
+      overlay.remove();
+      if (heroContent) heroContent.style.opacity = "1";
+    });
 }
 
 if (getCurrentPage() === "index.html") {
