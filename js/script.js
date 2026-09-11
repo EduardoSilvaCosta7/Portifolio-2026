@@ -303,7 +303,7 @@ window.lucide?.createIcons();
 const heroRotatingWord = document.querySelector(".hero-statement__word");
 
 if (heroRotatingWord) {
-  const heroWords = ["claras.", "intuitivas.", "humanas.", "eficientes."];
+  const heroWords = ["claras.", "intuitivas.", "simples.", "eficientes."];
   let heroWordIndex = 0;
 
   window.setInterval(async () => {
