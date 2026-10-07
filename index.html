@@ -1,126 +1,14 @@
-﻿
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Eduardo Silva — Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="icon" type="image/png" href='assets/images/signature-es.png'>
+    <meta name="description" content="Portfólio de Eduardo Silva — projetos digitais, design e tecnologia." />
+    <title>Eduardo Silva — Portfólio</title>
+    <link rel="icon" type="image/png" href="/assets/images/signature-es.png" />
   </head>
   <body>
-    <header class="topbar">
-      <nav class="topbar__links" aria-label="Navegação principal">
-        <a href="index.html" aria-current="page">
-          <span>Início</span>
-        </a>
-        <a href="experiencias.html">
-          <span>Portfólio</span>
-        </a>
-        <a class="topbar__whatsapp" href="https://wa.me/5511978472679" aria-label="Abrir conversa no WhatsApp">
-          <span>Contato</span>
-        </a>
-      </nav>
-    </header>
-    <svg class="glass-filter" aria-hidden="true" focusable="false">
-      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
-        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.005" numOctaves="1" seed="17" result="turbulence" />
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="20" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-        </svg>
-
-    <div class="hero" id="home">
-      <div class="hero__content">
-        <img class="hero-tangle" src="assets/images/hero-tangle.gif" alt="Emaranhado amarelo animado" />
-        <p class="hero-statement" aria-label="Transformo problemas complexos em soluções claras, intuitivas, humanas e eficientes.">
-          <span>Transformando problemas complexos em soluções</span>
-          <span class="hero-statement__rotator" aria-hidden="true"><span class="hero-statement__word">claras.</span></span>
-        </p>
-        <p class="hero-scroll-hint">Arraste para baixo</p>
-      </div>
-    </div>
-
-    <section class="about-section" aria-labelledby="about-title">
-      <div class="about-section__label">Sobre mim</div>
-      <div class="about-section__content">
-        <h2 id="about-title">Conecto estratégia, tecnologia e execução para tirar projetos do papel.</h2>
-        <div>
-          <p>Atuo de forma versátil entre administração, coordenação de projetos e design, com experiência em planejamento, organização, acompanhamento de equipes e criação de soluções visuais.</p>
-          <p>Também desenvolvo sites e aplicações, crio peças de design e trabalho com edição de vídeo e imagem. Essa combinação de competências me permite transitar entre estratégia, gestão e produção, adaptando-me às necessidades de cada projeto e conduzindo ideias até a entrega.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="showcase-section" aria-label="Projetos em destaque">
-      <div class="showcase-section__intro">
-        <p>Trabalhos selecionados</p>
-        <h2>Projetos em destaque</h2>
-      </div>
-      <div class="showcase-filmstrip" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque">
-        <div class="showcase-filmstrip__track">
-          <button class="showcase-filmstrip__card is-active" type="button" style="--card-glow: #b99a70" aria-label="Selecionar projeto Acervo Vivo" aria-current="true">
-            <img src="assets/images/acervo-vivo-card.png" alt="Eduardo Silva como coordenador na constru&ccedil;&atilde;o da plataforma Acervo Vivo" />
-          </button>
-          <button class="showcase-filmstrip__card" type="button" style="--card-glow: #5792d6" aria-label="Selecionar projeto Pirania">
-            <img src="assets/images/pirania-card.png" alt="Card da remasteriza&ccedil;&atilde;o do site Pirania" />
-          </button>
-          <button class="showcase-filmstrip__card" type="button" style="--card-glow: #e97614" aria-label="Selecionar projeto Notaê">
-            <img src="assets/images/notae-card.png" alt="Criação do Notaê, sistema para escolas" />
-          </button>
-        </div>
-        <div class="showcase-filmstrip__progress" aria-label="Selecionar projeto">
-          <button class="is-active" type="button" aria-label="Mostrar projeto Acervo Vivo" aria-current="true"></button>
-          <button type="button" aria-label="Mostrar projeto Pirania"></button>
-          <button type="button" aria-label="Mostrar projeto Notaê"></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="orbit-section" aria-label="Produções digitais">
-      <div class="orbit-section__copy">
-        <p>Produções digitais</p>
-        <h2>Competências técnicas</h2>
-      </div>
-
-      <div class="orbit-globe" aria-label="Ferramentas criativas e tecnológicas em órbita">
-        <div class="orbit orbit--one" aria-hidden="true">
-          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/1.svg" alt="" /></span>
-          <span style="--x: 100%; --y: 50%"><img src="assets/logos/zip-logos/2.svg" alt="" /></span>
-          <span style="--x: 50%; --y: 100%"><img src="assets/logos/zip-logos/3.svg" alt="" /></span>
-          <span style="--x: 0%; --y: 50%"><img src="assets/logos/zip-logos/4.svg" alt="" /></span>
-        </div>
-        <div class="orbit orbit--two" aria-hidden="true">
-          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/5.svg" alt="" /></span>
-          <span style="--x: 100%; --y: 50%"><img src="assets/logos/zip-logos/6.svg" alt="" /></span>
-          <span style="--x: 50%; --y: 100%"><img src="assets/logos/zip-logos/7.svg" alt="" /></span>
-          <span style="--x: 0%; --y: 50%"><img src="assets/logos/zip-logos/8.svg" alt="" /></span>
-        </div>
-        <div class="orbit orbit--three" aria-hidden="true">
-          <span style="--x: 21%; --y: 90%"><img src="assets/logos/zip-logos/9.svg" alt="" /></span>
-          <span style="--x: 2%; --y: 35%"><img src="assets/logos/zip-logos/10.svg" alt="" /></span>
-          <span style="--x: 50%; --y: 0%"><img src="assets/logos/zip-logos/11.svg" alt="" /></span>
-          <span style="--x: 98%; --y: 35%"><img src="assets/logos/zip-logos/12.svg" alt="" /></span>
-          <span style="--x: 79%; --y: 90%"><img src="assets/logos/zip-logos/13.svg" alt="" /></span>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-cta" aria-label="Entre em contato">
-      <div class="contact-cta__inner">
-        <div id="signature-drawing" aria-hidden="true"></div>
-        <h2>Entre em contato</h2>
-        <div class="contact-cta__links">
-          <a href="mailto:eduardosilcos@gmail.com">Email</a>
-          <a href="https://github.com/EduardoSilvaCosta7" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://wa.me/5511978472679" target="_blank" rel="noreferrer">WhatsApp</a>
-          <a href="https://www.linkedin.com/in/eduardo-silva-49605a435/" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-      </div>
-    </section>
-
-    <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-    <script defer src="js/script.js"></script>
-
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
